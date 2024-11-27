@@ -6,10 +6,12 @@
 
 #### [Solidity Snippets](https://github.com/ErichDylus/Open-Source-Legal-Engineering/tree/main/solidity)
 
+#### [Python Miniscripts](https://github.com/ErichDylus/Open-Source-Legal-Engineering/tree/main/scripts)
 
-### Open Source References
+---
+### General Open Source References
 
 - [Open source license menu](https://choosealicense.com/licenses/)
-- [Open source resources for individuals, communities, and companies](https://github.com/github/opensource.guide)
+- [Resources and guide to contributing to open source projects](https://github.com/github/opensource.guide)
 - [FAQ/flowchart on open source legal considerations](https://opensource.guide/legal/)
 
