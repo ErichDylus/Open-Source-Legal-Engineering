@@ -2,8 +2,14 @@
 This script acts as a centralized random number oracle by using the python `random` library, and using 
 `WALLET_ADDRESS' to call a function depending on the result.
 
-NOTE: This file is not audited. Anyone with access to `secrets.env` will have full control 
-over `WALLET_ADDRESS` via the private key. Exercise caution and avoid hardcoding sensitive data.
+NOTE: This file is not audited and is intended for educational purposes only. 
+Anyone with access to `secrets.env` will have full control over `WALLET_ADDRESS` via the private key. 
+Exercise caution and avoid hardcoding sensitive data.
+
+This is a simple example of a centralized random number oracle that requires corresponding 
+completed secrets.env and requirements.txt files to run, and acts through an EOA it controls (`WALLET_ADDRESS`).
+
+`WALLET_ADDRESS` must also have enough gas for the transactions.
 
 Replace all placeholders marked <<< >>> in secrets.env before running the script.
 
@@ -12,10 +18,10 @@ python-dotenv
 web3
 
 # --- secrets.env ---
-PRIVATE_KEY=<<<insert private key>>>
+PRIVATE_KEY=<<<oracle wallet address's private key>>>
 RPC_URL=<<<rpc url>>>
 WALLET_ADDRESS=<<<wallet address>>>
-REQUESTER_ADDRESS=<<<requester address>>>
+REQUESTER_ADDRESS=<<<requester contract address, complying with the `requester_abi`>>>
 CHAIN_ID=<<<chain id>>>
 GAS_LIMIT=<<<gas limit>>>
 GAS_PRICE=<<<gas price>>>
@@ -43,7 +49,18 @@ python rand_num_oracle.py
 REM Keep the window open after execution
 pause
 
-if command line, first create local python environment with `python -m venv venv` and install dependencies
+# --- command line (Windows) ---
+python -m venv venv
+venv\Scripts\activate
+pip install -r requirements.txt
+python rand_num_oracle.py
+
+# --- terminal (Mac) ---
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+python rand_num_oracle.py
+
 """
 
 from dotenv import load_dotenv
@@ -55,9 +72,9 @@ from web3 import Web3
 load_dotenv(dotenv_path="secrets.env")
 
 PRIVATE_KEY = os.getenv("PRIVATE_KEY")
-RPC_URL = os.getenv("RPC_URL")  # RPC URL for the blockchain network
-WALLET_ADDRESS = os.getenv("WALLET_ADDRESS")  # Sender wallet address, which must have enough gas for the txn
-REQUESTER_ADDRESS = os.getenv("REQUESTER_ADDRESS")  # Contract address for the oracle response from `WALLET ADDRESS`
+RPC_URL = os.getenv("RPC_URL")  # RPC URL for the blockchain network, through which `WALLET_ADDRESS` will send txns
+WALLET_ADDRESS = os.getenv("WALLET_ADDRESS")  # Oracle wallet address, which must have enough gas for the txns
+REQUESTER_ADDRESS = os.getenv("REQUESTER_ADDRESS")  # address requesting the oracle response from `WALLET_ADDRESS`
 CHAIN_ID = int(os.getenv("CHAIN_ID"))  # Blockchain network chain ID
 GAS_LIMIT = int(os.getenv("GAS_LIMIT"))  # Gas limit for transactions
 GAS_PRICE = int(os.getenv("GAS_PRICE"))  # Gas price in gwei
@@ -65,7 +82,7 @@ GAS_PRICE = int(os.getenv("GAS_PRICE"))  # Gas price in gwei
 min_value = 0 # Update as necessary
 max_value = 100 # Update as necessary
 
-# --- Requester contract ABI to return the randint, update as necessary ---
+# --- Example Requester contract ABI to return the randint, update as necessary ---
 requester_abi = [
     {
         "constant": False,
@@ -84,10 +101,7 @@ if not web3.is_connected():
     print("Failed to connect to network, check RPC_URL.")
     exit()
 
-# --- Load the Token Contract ---
-token_contract = web3.eth.contract(address=REQUESTER_ADDRESS, abi=requester_abi)
-
-# --- Send Generated Random Number to Contract ---
+# --- Helper Functions ---
 def send_random_number_to_contract(random_number):
     # Initialize requester contract
     contract = web3.eth.contract(address=REQUESTER_ADDRESS, abi=requester_abi)
