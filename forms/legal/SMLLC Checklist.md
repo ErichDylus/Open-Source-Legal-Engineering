@@ -1,4 +1,4 @@
-# Single Member Limited Liability Company Formation Checklist
+# Single Member LLC Formation Checklist
 
 _First step is always to consult a *lawyer in your jurisdiction* and an *accountant*. Applicability of each item in this list may vary according to your particular details._
 
@@ -25,8 +25,6 @@ _First step is always to consult a *lawyer in your jurisdiction* and an *account
 - [ ] Consider using bookkeeping software to keep track of income and expenses, and calculate estimated federal quarterly taxes. 
     - options such as Quickbooks will provide aggregated forms for annual tax filings
 - [ ] Apply for an [EIN](https://www.irs.gov/businesses/small-businesses-self-employed/apply-for-an-employer-identification-number-ein-online) if applicable.
-- [ ] File your beneficial ownership information report with FinCEN: [E-Filing](https://boiefiling.fincen.gov/fileboir). Ask your lawyer about any exemptions or for assistance.
-    - Companies that exist or are registered prior to January 1, 2024 have one year to file initial reports. Companies created or registered on or after January 1, 2024 have 90 days after creation or registration to file. Companies created or registered on or after January 1, 2025 have 30 days after creation or registration to file. If there are any corrections or changes of ownership, a new report must be filed within 30 days.
 - [ ] Consider an [EFTPS](https://www.eftps.gov/eftps/) account for paying quarterly estimated federal tax payments online from your LLC's bank account
 - [ ] `State-specific` each state has its own system for paying quarterly estimated state taxes.
     - these estimated amount payments can often be scheduled in advance for a taxable year and auto-withdrawn from your LLC's bank account (make a note of these payment dates)
