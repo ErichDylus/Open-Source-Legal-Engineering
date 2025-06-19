@@ -4,6 +4,7 @@ _First step is always to consult a *lawyer in your jurisdiction* and an *account
 
 - [ ] Choose a name 
     - search the applicable state's corporate directory for availability (for example, [DE's Division of Corp. Name Search](https://icis.corp.delaware.gov/Ecorp/EntitySearch/NameSearch.aspx))
+    - search federal and state trademark databases for conflicts
 - [ ] `State-specific` ensure your chosen name complies with state law
     - for example, many states require "LLC", "L.L.C.", or "Ltd." as a suffix for your entity name, and there are usually restrictions on certain sensitive or materially misleading names (for example, a carpentry business probably should not be named "Cardiac Surgeons LLC")
 - [ ] `State-specific` check whether any professional licensing is required for your commercial operation 
