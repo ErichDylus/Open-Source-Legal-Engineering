@@ -1,5 +1,7 @@
 # LLC Formation Checklist
 
+*mirrored at [varia.law/llc](https://varia.law/llc)*
+
 ## Name
 - [ ] Choose a name 
     - search the applicable state's corporate directory for availability (for example, [DE's Division of Corp. Name Search](https://icis.corp.delaware.gov/Ecorp/EntitySearch/NameSearch.aspx))
